@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masterclass Editor com Claude: você descreve o vídeo, o Claude escreve a edição</title>
+<meta name="description" content="Corte, legenda, texto na tela e trilha saem de um pedido bem feito. As 70 aulas da Masterclass Editor com Claude ensinam o Claude Code, o HyperFrames e o Claude Design, do zero, em treze módulos. Pagamento único, com 7 dias de garantia.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23EBE4D4'/><path d='M13 10.5v11l9-5.5z' fill='%23000'/></svg>">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- um conjunto de ícones, desenhado para esta página, usado com <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.4 10.4 14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="2" width="5" height="5" rx="1.4"/><rect x="9" y="2" width="5" height="5" rx="1.4"/><rect x="2" y="9" width="5" height="5" rx="1.4"/><rect x="9" y="9" width="5" height="5" rx="1.4"/></g></symbol>
+    <symbol id="i-chat" viewBox="0 0 16 16"><path d="M13.5 8.2a5.3 5.3 0 0 1-5.5 5.3 6 6 0 0 1-2-.3L3 14l.9-2.6A5.2 5.2 0 0 1 2.5 8.2 5.3 5.3 0 0 1 8 3a5.3 5.3 0 0 1 5.5 5.2Z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 16 16"><path d="M2 12.5 6 8l3 2.6L14 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 16 16"><path d="M3 3.5h6a2 2 0 0 1 2 2v8a1.6 1.6 0 0 0-1.6-1.6H3V3.5ZM13 3.5H9.8" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></g></symbol>
+    <symbol id="i-users" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="6" cy="6" r="2.4"/><path d="M2 13.2c0-2.1 1.8-3.4 4-3.4s4 1.3 4 3.4M11 4.2a2.2 2.2 0 0 1 0 4.2M12.6 13.2c0-1.5-.6-2.5-1.6-3.1"/></g></symbol>
+    <symbol id="i-award" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5 2.5h6v4a3 3 0 0 1-6 0v-4Z"/><path d="M6.5 13.5h3M8 9.5v4M11 3.5h2v1.2a2 2 0 0 1-2 2M5 3.5H3v1.2a2 2 0 0 0 2 2"/></g></symbol>
+    <symbol id="i-folder" viewBox="0 0 16 16"><path d="M2.5 4.5a1 1 0 0 1 1-1h3l1.5 1.6h4.5a1 1 0 0 1 1 1v6.4a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-8Z" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+    <symbol id="i-file" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M4 2.5h5l3 3v8H4v-11Z"/><path d="M9 2.5v3h3"/></g></symbol>
+    <symbol id="i-arrow-l" viewBox="0 0 20 20"><path d="M16 10H4m0 0 5-5m-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 20 20"><path d="M4 10h12m0 0-5-5m5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 14 14"><path d="m3.4 7.2 2.4 2.4 4.8-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-focus" viewBox="0 0 21 21"><path d="M10.5 3v4.5m0 6V18M3 10.5h4.5m6 0H18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 16 16"><path d="M4.5 11V7.5a3.5 3.5 0 0 1 7 0V11l1 1.2h-9L4.5 11ZM6.8 13.6a1.3 1.3 0 0 0 2.4 0" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 3.5v9M3.5 8h9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 16 16"><path d="M3 5h10M3 11h10M6 3.5v3M10.5 9.5v3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><rect x="2.5" y="3" width="11" height="10" rx="1.8"/><path d="M7 3v10M7 7.5h6.5"/></g></symbol>
+    <symbol id="i-type" viewBox="0 0 16 16"><path d="M4 13 7.4 3.5h1.2L12 13M5.4 9.4h5.2M3.5 14.5h9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-image" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><rect x="2.5" y="3" width="11" height="10" rx="1.6"/><circle cx="6" cy="6.5" r="1.1"/><path d="m3 11.5 3.2-3 2.6 2.4 1.7-1.5 2.7 2.4"/></g></symbol>
+    <symbol id="i-list" viewBox="0 0 16 16"><path d="M3 4.5h10M5 8h6M7 11.5h2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-send" viewBox="0 0 16 16"><path d="M8 12.5v-9m0 0L4.5 7M8 3.5 11.5 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.2"><rect x="5.5" y="5.5" width="8" height="8" rx="1.6"/><path d="M10.5 5.5V4a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 4v5A1.5 1.5 0 0 0 4 10.5h1.5"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3.2l2 1.3"/></g></symbol>
+    <symbol id="i-link" viewBox="0 0 16 16"><path d="M7 9a2.5 2.5 0 0 0 3.6 0l2-2A2.5 2.5 0 0 0 9 3.4l-.8.8M9 7a2.5 2.5 0 0 0-3.6 0l-2 2A2.5 2.5 0 0 0 7 12.6l.8-.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 16 16"><path d="M3.5 11.5c0-3 .8-5 3-6.5M9.5 11.5c0-3 .8-5 3-6.5M3.5 11.5h2.5V9H3.5M9.5 11.5H12V9H9.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heading" viewBox="0 0 16 16"><path d="M4 3.5v9M12 3.5v9M4 8h8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-split" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.6"/><path d="M8 3.5v9"/></g></symbol>
+    <symbol id="i-rows" viewBox="0 0 16 16"><path d="M3 5h4M3 8h7M3 11h10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 16 16"><path d="M3.5 8h9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3.5" y="7" width="9" height="6.5" rx="1.6"/><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7"/></g></symbol>
+    <symbol id="i-eye" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1.8 8S4 3.8 8 3.8 14.2 8 14.2 8 12 12.2 8 12.2 1.8 8 1.8 8Z"/><circle cx="8" cy="8" r="1.8"/></g></symbol>
+    <symbol id="i-play" viewBox="0 0 16 16"><path d="M6 4.5v7l6-3.5z" fill="currentColor"/></symbol>
+    <symbol id="i-x" viewBox="0 0 16 16"><path d="m4.5 4.5 7 7m0-7-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 16 16"><path d="M8 13.5S2.5 10.2 2.5 6.6A2.9 2.9 0 0 1 8 5.2a2.9 2.9 0 0 1 5.5 1.4c0 3.6-5.5 6.9-5.5 6.9z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<a class="f-skip" href="#about">Pular para o conteúdo</a>
+
+<!-- ═══════════ TOPO ═══════════ -->
+<header class="nav" id="nav">
+  <div class="nav__bar">
+    <a class="nav__mark" href="#top" aria-label="Masterclass Editor com Claude, voltar ao topo">
+      <span class="nav__glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#EBE4D4"/><path d="M10 8v8l7-4z" fill="#000"/></svg>
+      </span>
+      <span>Masterclass Editor com Claude</span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#about">Como funciona</a>
+      <a href="#features">Por dentro</a>
+      <a href="#modules">Os 13 módulos</a>
+      <a href="#pricing">Preços</a>
+      <a href="#faq">Perguntas</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__login" href="https://hotmart.com/pt-br/club/masterclass-editor-com-claude">Área de membros</a>
+      <a class="btn btn--glass nav__cta" href="#pricing">Quero entrar</a>
+      <button class="nav__burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPanel">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="nav__burger-a" d="M4 9h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="nav__burger-b" d="M4 15h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav__panel" id="navPanel" hidden>
+    <nav aria-label="Menu">
+      <a href="#about">Como funciona</a>
+      <a href="#features">Por dentro</a>
+      <a href="#modules">Os 13 módulos</a>
+      <a href="#pricing">Preços</a>
+      <a href="#faq">Perguntas</a>
+    </nav>
+    <a class="btn btn--glass" href="#pricing">Quero entrar</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════ TOPO DA PÁGINA ═══════════ -->
+  <section id="top" class="hero-act" data-sc-act="flow">
+    <div class="hero">
+
+      <div class="hero__sky" aria-hidden="true"></div>
+
+      <div class="ridge ridge--far" aria-hidden="true"><canvas id="ridgeFar"></canvas></div>
+      <div class="ridge ridge--mid" aria-hidden="true"><canvas id="ridgeMid"></canvas></div>
+      <div class="ridge ridge--near" aria-hidden="true"><canvas id="ridgeNear"></canvas></div>
+
+      <div class="hero__copy" data-sc-cue="0 1 0 0">
+        <span class="pill pill--plain">13 módulos &middot; 70 aulas &middot; em PDF</span>
+        <!-- os espaços depois de cada <br> importam: no celular as quebras
+             somem e as palavras precisam manter o espaço -->
+        <h1 class="t-hero">Você descreve o vídeo.<br> O Claude escreve a edição.<br> O olho continua seu.</h1>
+        <p class="hero__sub">Corte, legenda, texto na tela e trilha saem de um pedido bem feito. As 70
+          aulas ensinam o que pedir ao Claude e como conferir o que volta.</p>
+        <a class="btn btn--solid btn--lg" href="#pricing">Quero saber como</a>
+      </div>
+
+      <!-- o painel de membro: uma ilustração, escondida de leitores de tela -->
+      <div class="app app--hero" aria-hidden="true">
+        <div class="app__side">
+          <div class="app__search"><i></i><svg><use href="#i-search"/></svg></div>
+          <ul class="app__nav">
+            <li aria-current="true"><svg><use href="#i-book"/></svg>Os 13 módulos</li>
+            <li><svg><use href="#i-file"/></svg>Aulas em PDF</li>
+            <li><svg><use href="#i-list"/></svg>Pedidos prontos</li>
+            <li><svg><use href="#i-layout"/></svg>Claude Design</li>
+            <li><svg><use href="#i-play"/></svg>HyperFrames</li>
+            <li><svg><use href="#i-eye"/></svg>Revisão</li>
+            <li><svg><use href="#i-sliders"/></svg>Sua esteira</li>
+          </ul>
+        </div>
+
+        <div class="app__main">
+          <canvas class="app__mesh" id="mesh"></canvas>
+          <!-- quatro módulos, um por vez -->
+          <div class="rotor" data-rotor>
+            <div class="preview is-on" data-tint="0">
+              <span class="preview__av">D</span>
+              <p class="preview__name">Claude Design</p>
+              <p class="preview__meta"><span class="preview__faces"><i></i><i></i><i></i></span>Módulo 2 &middot; 8 aulas</p>
+              <a class="preview__cta" href="#pricing" tabindex="-1">Abrir o módulo</a>
+              <p class="preview__desc">Peças e animações sem instalar nada. &rarr; A primeira cartela de abertura &rarr; O kit da sua marca, guardado de uma vez &rarr; Texto que entra, número que sobe, logo que se monta</p>
+            </div>
+            <div class="preview" data-tint="10">
+              <span class="preview__av">P</span>
+              <p class="preview__name">Primeira edição</p>
+              <p class="preview__meta"><span class="preview__faces"><i></i><i></i><i></i></span>Módulo 4 &middot; 7 aulas</p>
+              <a class="preview__cta" href="#pricing" tabindex="-1">Abrir o módulo</a>
+              <p class="preview__desc">Cortar erros, pausas e silêncios. &rarr; Transcrever em português sem virar inglês &rarr; O plano de corte que você aprova &rarr; O silêncio medido, não chutado</p>
+            </div>
+            <div class="preview" data-tint="-18">
+              <span class="preview__av">B</span>
+              <p class="preview__name">O briefing de edição</p>
+              <p class="preview__meta"><span class="preview__faces"><i></i><i></i><i></i></span>Módulo 5 &middot; 9 aulas</p>
+              <a class="preview__cta" href="#pricing" tabindex="-1">Abrir o módulo</a>
+              <p class="preview__desc">Estilo, formato, beats e legibilidade. &rarr; O efeito na palavra certa &rarr; As palavras que viram movimento &rarr; Texto na tela que dá para ler</p>
+            </div>
+            <div class="preview" data-tint="-9">
+              <span class="preview__av">R</span>
+              <p class="preview__name">Revisão</p>
+              <p class="preview__meta"><span class="preview__faces"><i></i><i></i><i></i></span>Módulo 7 &middot; 5 aulas</p>
+              <a class="preview__cta" href="#pricing" tabindex="-1">Abrir o módulo</a>
+              <p class="preview__desc">O que a IA confere sozinha e o que só você vê. &rarr; O relatório que parece limpo sem ter conferido &rarr; Feedback com minutagem &rarr; O link para o cliente aprovar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ COMO FUNCIONA ═══════════ -->
+  <section id="about" class="intro" data-sc-act="flow">
+    <div class="intro__col">
+      <span class="pill pill--dim" data-sc-in><i aria-hidden="true"></i>Como funciona</span>
+      <div class="intro__body" data-intro>
+        <p class="intro__p" data-sc-in>Editar vídeo com o Claude não é arrastar clipe numa linha do
+          tempo. É pedir bem, e conferir o que volta.</p>
+        <p class="intro__p" data-sc-in>Você descreve o corte, a legenda, o texto na tela, a trilha. O
+          Claude escreve um arquivo, e o vídeo sai dele. Pediu um título maior, ele mexe no mesmo
+          arquivo e o vídeo sai de novo.</p>
+        <p class="intro__p" data-sc-in>O que continua com você é o olho: o que fica, o que sai e se o
+          vídeo presta. O curso ensina as duas metades.</p>
+      </div>
+
+      <div class="cta-band" data-sc-in>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Quero aprender isso agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ O QUE VOCÊ VAI FAZER ═══════════
+       As imagens saíram das próprias aulas: a página do PDF no celular e, ao
+       lado, o quadro do teste daquela aula. O gerador está em
+       masterclass-editor-claude/site/imagens.mjs. -->
+  <section id="uses" class="uses" data-sc-act="flow">
+    <div class="shell">
+      <div class="head">
+        <div class="head__main" data-sc-in>
+          <span class="pill"><i aria-hidden="true"></i>O que você vai fazer</span>
+          <h2 class="t-xl">O que um bom pedido faz,<br class="br-d"> <span class="t-dim">do primeiro vídeo à sua esteira da semana.</span></h2>
+        </div>
+        <p class="head__aside head__aside--wide" data-sc-in>Oito coisas que as aulas ensinam a fazer,
+          com o pedido pronto para colar. As imagens são das próprias aulas: a página do PDF e, ao
+          lado, o que saiu do teste.</p>
+      </div>
+
+      <div class="uses__grid" data-sc-in data-sc-stagger="50">
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-1.webp" alt="A aula 3.5 aberta num celular, ao lado do primeiro vídeo do teste, com o título Meu primeiro vídeo" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">01</p>
+          <h3 class="use__h">O primeiro vídeo, só com um pedido</h3>
+          <p class="use__p">Você descreve o que quer ver. O Claude escreve a edição num arquivo, na
+            mesma linguagem das páginas de internet, e o HyperFrames transforma esse arquivo num MP4.</p>
+          <p class="use__p">No computador do curso, instalar o HyperFrames pedindo ao Claude levou
+            cerca de um minuto. O primeiro vídeo, de dez segundos, sai no mesmo módulo.</p>
+        </article>
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-2.webp" alt="Quatro aulas do módulo 4 abertas em celulares: transcrever, o plano de corte, o silêncio medido e exportar" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">02</p>
+          <h3 class="use__h">Cortar erros, pausas e silêncios</h3>
+          <p class="use__p">O Claude propõe o plano de corte e você aprova antes de ele mexer no vídeo.
+            A pausa é medida na transcrição, com uma folga de cada lado para o corte não comer a
+            primeira sílaba.</p>
+          <p class="use__p">Depois, o rascunho para testar, a qualidade alta para entregar e o que
+            levar para o CapCut, se você quiser terminar no seu editor.</p>
+        </article>
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-3.webp" alt="Quatro aulas do módulo 2 abertas em celulares: a primeira peça, o kit da marca, animar e peças para rede" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">03</p>
+          <h3 class="use__h">Peças da sua marca, sem instalar nada</h3>
+          <p class="use__p">No Claude Design, dentro do navegador: cartela de abertura, texto que
+            entra, número que sobe e logo que se monta. As cores, as fontes e o logo da sua marca
+            ficam guardados de uma vez.</p>
+          <p class="use__p">No teste, a cartela de abertura ficou pronta em uns 30 segundos. Depois as
+            peças vão para cima da sua gravação: abertura, nome na tela e encerramento.</p>
+        </article>
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-4.webp" alt="A aula 5.4 aberta num celular, ao lado do nome na tela feito no teste: Ana Souza, barista" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">04</p>
+          <h3 class="use__h">Texto na tela, no segundo certo</h3>
+          <p class="use__p">O Claude não assiste ao seu vídeo: ele lê a sua fala, palavra por palavra,
+            com o segundo de cada uma. Por isso o pedido que funciona é &ldquo;quando eu disser X,
+            entra Y&rdquo;.</p>
+          <p class="use__p">E o texto que dá para ler: tamanho, tempo, contraste e lugar. O catálogo
+            tem 387 peças prontas, de transição a nome na tela, chamadas pelo nome.</p>
+        </article>
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-5.webp" alt="A aula 10.3 aberta num celular, ao lado de um quadro do explicativo sobre café, narrado e legendado" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">05</p>
+          <h3 class="use__h">Vídeo explicativo, sem aparecer</h3>
+          <p class="use__p">Do seu texto sai o roteiro, uma ideia por cena. A voz é escolhida e fixada
+            em português, e é ela que decide quanto o vídeo dura.</p>
+          <p class="use__p">O explicativo sai montado e legendado. A aula mostra o erro que deixou a
+            legenda do teste em inglês inventado, e o pedido que conserta.</p>
+        </article>
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-6.webp" alt="A aula 11.3 aberta num celular, ao lado de três episódios verticais de uma série sobre café, feitos a partir de uma planilha" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">06</p>
+          <h3 class="use__h">Uma série inteira a partir de uma planilha</h3>
+          <p class="use__p">Um modelo com lacunas e uma planilha com uma linha por vídeo: um comando
+            renderiza todos. E de um vídeo longo saem vários Reels.</p>
+          <p class="use__p">O título, a descrição e a capa saem da transcrição do próprio vídeo. E tem o
+            vídeo na batida da música, com fotos e cortes no tempo certo.</p>
+        </article>
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-7.webp" alt="A aula 13.3 aberta num celular, ao lado do vídeo feito a partir da página de uma cafeteria" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">07</p>
+          <h3 class="use__h">Do site para o vídeo</h3>
+          <p class="use__p">A skill de lançamento parte de um endereço: captura a página, pega a marca
+            e monta o vídeo. A aula mostra o que a captura traz e o que ela deixa de fora.</p>
+          <p class="use__p">No mesmo módulo: videoaula com cards e legenda, vídeo de produto com as
+            peças da sua marca e a sua esteira da semana.</p>
+        </article>
+        <article class="use rim">
+          <img class="use__img" src="assets/site/uso-8.webp" alt="A aula 12.2 aberta num celular, ao lado do quadro feito com a primeira skill, com a tarja de Ana Souza" width="719" height="299" decoding="async" loading="lazy">
+          <p class="use__n">08</p>
+          <h3 class="use__h">O Claude lembrar do seu jeito</h3>
+          <p class="use__p">A correção que você repete vira uma skill: um arquivo que o Claude consulta
+            sozinho. A primeira sai do seu próprio feedback; outra, de um vídeo que você admira.</p>
+          <p class="use__p">E o CLAUDE.md e a memória: o que você escreve, o que o Claude anota, e onde
+            cada um fica entre uma conversa e outra.</p>
+        </article>
+      </div>
+
+      <div class="cta-band" data-sc-in>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Quero fazer isso com o Claude</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ POR DENTRO ═══════════ -->
+  <section id="features" class="tour" data-sc-act="flow">
+    <div class="shell">
+      <div class="head">
+        <div class="head__main" data-sc-in>
+          <span class="pill"><i aria-hidden="true"></i>Por dentro do curso</span>
+          <h2 class="t-xl">Tudo incluído,<br class="br-d"> <span class="t-dim">liberado desde o primeiro dia.</span></h2>
+        </div>
+        <p class="head__aside head__aside--wide" data-sc-in>Treze módulos e 70 aulas em PDF, liberados
+          de uma vez. Sem upsell e sem nada guardado para depois.</p>
+      </div>
+
+      <figure class="shot" data-sc-in>
+        <img class="shot__img" src="assets/plataforma.webp" alt="A área de membros da Masterclass Editor com Claude, com as capas dos treze módulos e o progresso de cada um" width="1800" height="1018" decoding="async" loading="lazy">
+        <figcaption class="shot__cap">A sua área de membros: os 13 módulos, na ordem, com o
+          progresso de cada um. Você entra e já sabe onde começar.</figcaption>
+      </figure>
+
+      <div class="cta-band" data-sc-in>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Quero meu acesso hoje</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ OS 13 MÓDULOS ═══════════ -->
+  <section id="modules" class="phases" data-sc-act="flow">
+    <div class="shell">
+      <div class="head">
+        <div class="head__main" data-sc-in>
+          <span class="pill"><i aria-hidden="true"></i>Os 13 módulos</span>
+          <h2 class="t-xl">Tudo o que você precisa para<br class="br-d"> <span class="t-dim">editar vídeo com o Claude.</span></h2>
+        </div>
+        <p class="head__aside" data-sc-in>Um caminho, em ordem, do primeiro pedido à esteira que se
+          repete toda semana. O Claude Design vem antes da instalação: a primeira peça sai sem
+          terminal.</p>
+      </div>
+
+      <ul class="mods__stats" data-sc-in data-sc-stagger="60">
+        <li><b>13</b><span>módulos, na ordem certa</span></li>
+        <li><b>70</b><span>aulas em PDF, feitas para ler no celular</span></li>
+        <li><b>64</b><span>aulas com o pedido pronto para colar no Claude</span></li>
+      </ul>
+
+      <ol class="mods" data-sc-in data-sc-stagger="40">
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo1.webp" alt="Capa do módulo 1, Comece por aqui" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 1<span class="mod__meta">4 aulas</span></p>
+            <h3 class="mod__h">O que o Claude edita, e o que continua com você</h3>
+            <p class="mod__p">As duas ferramentas do curso e a parte que continua sendo sua. O que você precisa antes de começar, quanto gasta cada coisa do seu plano e o vocabulário de edição que o Claude entende: corte, trilha, B-roll e nome na tela.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo2.webp" alt="Capa do módulo 2, Claude Design" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 2<span class="mod__meta">8 aulas</span></p>
+            <h3 class="mod__h">Claude Design: peças e animações sem instalar nada</h3>
+            <p class="mod__p">No navegador, com a sua marca: a primeira cartela de abertura, o kit de cores, fontes e logo guardado de uma vez, texto que entra e número que sobe, peças para rede, a capa do vídeo e como tirar tudo de lá.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo3.webp" alt="Capa do módulo 3, Instalação" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 3<span class="mod__meta">7 aulas</span></p>
+            <h3 class="mod__h">Claude Code e HyperFrames no Windows, do zero</h3>
+            <p class="mod__p">A aba Code do app do Claude, sem terminal. O Node, o FFmpeg e o Git, o HyperFrames instalado pedindo ao próprio Claude, o primeiro vídeo de dez segundos e o que fazer quando dá erro no Windows.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo4.webp" alt="Capa do módulo 4, Primeira edição" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 4<span class="mod__meta">7 aulas</span></p>
+            <h3 class="mod__h">Primeira edição: cortar erros, pausas e silêncios</h3>
+            <p class="mod__p">Gravar pensando no corte, o vídeo de celular, transcrever em português sem virar inglês, o plano de corte que você aprova e o silêncio medido, não chutado. No fim, o que levar para o CapCut, e em que formato.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo5.webp" alt="Capa do módulo 5, O briefing de edição" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 5<span class="mod__meta">9 aulas</span></p>
+            <h3 class="mod__h">O briefing: estilo, formato, beats e legibilidade</h3>
+            <p class="mod__p">A estrutura de um bom pedido de edição. O formato 16:9 ou 9:16, o efeito na palavra certa, as palavras que viram movimento, o texto que dá para ler, a legenda que ajuda e as negativas que o Claude entende.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo6.webp" alt="Capa do módulo 6, O Studio" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 6<span class="mod__meta">3 aulas</span></p>
+            <h3 class="mod__h">O Studio: ajustar à mão o que o Claude fez</h3>
+            <p class="mod__p">O editor visual do HyperFrames, que mexe nos mesmos arquivos que o Claude. O que é seguro mover e aparar na linha do tempo, o que ele corrige no texto, e o que volta para o Claude.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo7.webp" alt="Capa do módulo 7, Revisão" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 7<span class="mod__meta">5 aulas</span></p>
+            <h3 class="mod__h">Revisão: o que a IA confere sozinha e o que só você vê</h3>
+            <p class="mod__p">O que a verificação automática pega, e o relatório que parece limpo sem ter conferido. O ritmo, o som e o sentido, o feedback com minutagem, o plano aprovado antes do render e o link para o cliente aprovar.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo8.webp" alt="Capa do módulo 8, Do Design para o vídeo" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 8<span class="mod__meta">3 aulas</span></p>
+            <h3 class="mod__h">Do Design para o vídeo: pelo ZIP ou pela nuvem</h3>
+            <p class="mod__p">As peças do Claude Design por cima da sua gravação, cada uma com hora de entrar e de sair: abertura, nome na tela e encerramento. Pelo ZIP, com o Claude Code, ou pelo envio direto para o HyperFrames.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo9.webp" alt="Capa do módulo 9, Acabamento" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 9<span class="mod__meta">8 aulas</span></p>
+            <h3 class="mod__h">Acabamento: som, B-roll, efeitos e direitos</h3>
+            <p class="mod__p">Trilha e efeitos no volume certo, espaço para a voz sem matar a música, voz gerada em português, B-roll sem filmar, zoom na palavra forte, você recortado do fundo e o que você pode usar: marca, música e imagem de gente.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo10.webp" alt="Capa do módulo 10, Vídeo sem aparecer" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 10<span class="mod__meta">3 aulas</span></p>
+            <h3 class="mod__h">Vídeo sem aparecer: do texto ao explicativo narrado</h3>
+            <p class="mod__p">Do seu texto ao roteiro, uma ideia por cena. A voz escolhida e fixada em português, o tempo medido, e o explicativo montado e legendado, sem você na frente da câmera.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo11.webp" alt="Capa do módulo 11, Formatos e escala" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 11<span class="mod__meta">4 aulas</span></p>
+            <h3 class="mod__h">Formatos e escala: um vídeo, várias peças</h3>
+            <p class="mod__p">De um vídeo longo para vários Reels. Título, descrição e capa a partir da transcrição, vídeos em série a partir de uma planilha e vídeo na batida da música.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo12.webp" alt="Capa do módulo 12, Skills e memória" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 12<span class="mod__meta">5 aulas</span></p>
+            <h3 class="mod__h">Skills e memória: o Claude lembrar do seu jeito</h3>
+            <p class="mod__p">O que é uma skill e onde ela mora, a primeira a partir do seu próprio feedback, outra a partir de uma referência, um vídeo que você admira recriado quadro a quadro, e o CLAUDE.md e a memória.</p>
+          </div>
+        </li>
+        <li class="mod rim">
+          <img class="mod__cover" src="assets/modulo13.webp" alt="Capa do módulo 13, Projetos completos" width="1200" height="675" decoding="async" loading="lazy">
+          <div class="mod__text">
+            <p class="mod__n">Módulo 13<span class="mod__meta">4 aulas</span></p>
+            <h3 class="mod__h">Projetos completos: videoaula, produto, site e a sua esteira</h3>
+            <p class="mod__p">Videoaula com cards e legenda, vídeo de produto com as peças da sua marca e um lançamento a partir de uma página. No fim, o pedido avulso vira um fluxo que se repete toda semana.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="phases__cta cta-band" data-sc-in>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Quero as 70 aulas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TESTADO AQUI ═══════════
+       Três achados de teste que estão nas aulas, com a aula de onde saíram.
+       Nenhum é depoimento: o curso ainda não tem alunos para mostrar. -->
+  <section id="results" class="notes" data-sc-act="flow">
+    <div class="shell">
+      <div class="head head--link">
+        <div class="head__main" data-sc-in>
+          <span class="pill"><i aria-hidden="true"></i>Testado aqui</span>
+          <h2 class="t-xl">As aulas dizem onde<br>as ferramentas ainda falham</h2>
+        </div>
+        <a class="more" href="#modules" data-sc-in>Veja os 13 módulos <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <div class="wins" data-sc-in data-sc-stagger="60">
+        <article class="win rim">
+          <p class="win__who"><span class="win__av">6</span>Aula 6.2<em>O Studio</em></p>
+          <p class="win__text">Apagar um pedaço da fala no Studio fechou o buraco só no vídeo. O som
+            e a legenda ficaram onde estavam: três segundos de boca fora da voz.</p>
+          <p class="win__meta"><span>Setembro de 2026</span><span class="win__ex">teste</span></p>
+        </article>
+        <article class="win rim">
+          <p class="win__who"><span class="win__av">7</span>Aula 7.1<em>Revisão</em></p>
+          <p class="win__text">A verificação automática terminou em &ldquo;Check passed&rdquo; com a voz
+            três segundos fora da boca. A aula mostra como fazer o aviso reprovar.</p>
+          <p class="win__meta"><span>Setembro de 2026</span><span class="win__ex">teste</span></p>
+        </article>
+        <article class="win rim">
+          <p class="win__who"><span class="win__av">10</span>Aula 10.3<em>Vídeo sem aparecer</em></p>
+          <p class="win__text">A voz falava português, e a legenda saiu &ldquo;Caffe cualdo amargo
+            quasicen prehecoopada agua&rdquo;: escrita por um ouvido em inglês. A aula traz o pedido
+            que conserta.</p>
+          <p class="win__meta"><span>Setembro de 2026</span><span class="win__ex">teste</span></p>
+        </article>
+      </div>
+
+      <div class="cta-band" data-sc-in>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Quero aprender o que funciona</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PARA QUEM É ═══════════ -->
+  <section id="who" class="vs" data-sc-act="flow">
+    <div class="shell">
+      <p class="vs__line" data-sc-in>A única pergunta é quando você começa.</p>
+
+      <div class="who" data-sc-in data-sc-stagger="40">
+        <p class="who__h">Para quem é</p>
+        <ul class="who__chips">
+          <li>Quem nunca editou vídeo</li>
+          <li>Quem já assina o Claude</li>
+          <li>Quem cansou de arrastar clipe</li>
+          <li>Quem grava videoaula</li>
+          <li>Quem faz vídeo de produto</li>
+          <li>Quem posta Reels</li>
+          <li>Quem não quer aparecer</li>
+          <li>Quem edita para cliente</li>
+          <li>Quem quer uma esteira semanal</li>
+        </ul>
+      </div>
+
+      <div class="cta-band" data-sc-in>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Sim, isso é para mim</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PREÇOS ═══════════ -->
+  <section id="pricing" class="plans" data-sc-act="flow">
+    <div class="shell">
+      <div class="head head--solo" data-sc-in>
+        <span class="pill"><i aria-hidden="true"></i>Sua vaga</span>
+      </div>
+
+      <!-- a escolha: três cartas, e o acesso atrás de cada uma -->
+      <div class="pick" data-pick data-sc-in>
+        <p class="pick__h">Escolha uma carta e abra a sua vaga</p>
+        <p class="pick__sub">O acesso completo à Masterclass está atrás das três. Clique em uma
+          para abrir a sua.</p>
+        <ul class="pick__row">
+          <li><button class="pcard" type="button" data-pick-card="1" aria-label="Abrir a carta 1">
+            <span class="pcard__in">
+              <span class="pcard__face pcard__back"><canvas class="pcard__mesh" aria-hidden="true"></canvas><span class="pcard__mark" aria-hidden="true"></span><span class="pcard__n">Carta 1</span></span>
+              <span class="pcard__face pcard__front"><span class="pcard__off" data-pick-label>Vaga</span></span>
+            </span>
+          </button></li>
+          <li><button class="pcard" type="button" data-pick-card="2" aria-label="Abrir a carta 2">
+            <span class="pcard__in">
+              <span class="pcard__face pcard__back"><canvas class="pcard__mesh" aria-hidden="true"></canvas><span class="pcard__mark" aria-hidden="true"></span><span class="pcard__n">Carta 2</span></span>
+              <span class="pcard__face pcard__front"><span class="pcard__off" data-pick-label>Vaga</span></span>
+            </span>
+          </button></li>
+          <li><button class="pcard" type="button" data-pick-card="3" aria-label="Abrir a carta 3">
+            <span class="pcard__in">
+              <span class="pcard__face pcard__back"><canvas class="pcard__mesh" aria-hidden="true"></canvas><span class="pcard__mark" aria-hidden="true"></span><span class="pcard__n">Carta 3</span></span>
+              <span class="pcard__face pcard__front"><span class="pcard__off" data-pick-label>Vaga</span></span>
+            </span>
+          </button></li>
+        </ul>
+        <p class="pick__note" data-pick-note role="status"></p>
+      </div>
+
+      <div class="offer" data-sc-in>
+        <div class="offer__value rim">
+          <p class="offer__vh">O que entra no acesso</p>
+          <ul class="included__list">
+            <li><span class="tick" aria-hidden="true"><svg><use href="#i-check"/></svg></span><b>Os 13 módulos completos</b> &mdash; 70 aulas, do que o Claude edita até a sua esteira da semana</li>
+            <li><span class="tick" aria-hidden="true"><svg><use href="#i-check"/></svg></span><b>70 aulas em PDF</b> &mdash; feitas para ler no celular, uma por vez, na ordem</li>
+            <li><span class="tick" aria-hidden="true"><svg><use href="#i-check"/></svg></span><b>O pedido pronto para colar</b> &mdash; 64 das 70 aulas trazem o pedido para o Claude</li>
+            <li><span class="tick" aria-hidden="true"><svg><use href="#i-check"/></svg></span><b>Claude Code, HyperFrames e Claude Design</b> &mdash; as ferramentas do curso, do zero</li>
+            <li><span class="tick" aria-hidden="true"><svg><use href="#i-check"/></svg></span><b>A instalação no Windows, passo a passo</b> &mdash; e o que fazer quando dá erro</li>
+            <li><span class="tick" aria-hidden="true"><svg><use href="#i-check"/></svg></span><b>O que só você vê</b> &mdash; a revisão de ritmo, som e sentido que a verificação não faz</li>
+          </ul>
+          <p class="offer__vfoot">Tudo liberado de uma vez, já no primeiro acesso. Se você já pediu
+            uma edição ao Claude e o vídeo voltou diferente do que você queria, é isso que os
+            módulos 5 e 7 resolvem: o pedido bem feito e a revisão do que volta.</p>
+        </div>
+
+        <aside class="offer__buy">
+          <p class="offer__flag">Pagamento único</p>
+          <p class="offer__kicker">Acesso completo à Masterclass</p>
+          <p class="offer__price"><span class="offer__cur">R$</span><span class="offer__amt">47</span><span class="offer__cents">,90</span></p>
+          <p class="offer__sub"><b>70 aulas por R$ 47,90.</b> Dá menos de R$ 0,70 por aula, uma vez só,
+            sem mensalidade e sem upgrade escondido depois.</p>
+          <p class="offer__how">A assinatura do Claude não está inclusa: o Claude Code e o Claude
+            Design pedem um plano pago, e as aulas 1.2 e 1.4 mostram o que você precisa e quanto
+            gasta cada coisa.</p>
+          <a class="btn btn--lg btn--mesh offer__cta" href="https://pay.hotmart.com/J107787863N">Quero editar vídeo com o Claude</a>
+          <p class="offer__pay">Pagamento único de R$ 47,90 &middot; processado pela Hotmart</p>
+          <ul class="offer__trust">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Acesso assim que o pagamento é aprovado</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Os 13 módulos liberados de uma vez</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>70 aulas em PDF, para ler no celular</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>7 dias de garantia, dinheiro de volta</li>
+          </ul>
+          <p class="offer__last">Se em 7 dias você achar que não era para você, devolvemos cada
+            centavo. Sem pergunta e sem burocracia.</p>
+        </aside>
+      </div>
+
+      <div class="offer__foot" data-sc-in>
+        <p class="offer__close">A única coisa que você arrisca é continuar editando na mão.</p>
+        <p class="offer__close-sub">Essas ferramentas mudam rápido. As aulas dizem onde elas ainda
+          falham, em vez de fingir que não falham.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PERGUNTAS ═══════════ -->
+  <section id="faq" class="faq" data-sc-act="flow">
+    <div class="shell">
+      <div class="head">
+        <div class="head__main" data-sc-in>
+          <span class="pill"><i aria-hidden="true"></i>Perguntas</span>
+          <h2 class="t-xl">Antes de você decidir.</h2>
+        </div>
+        <p class="head__aside" data-sc-in>Respostas curtas sobre para quem é, o que você precisa ter,
+          quanto gasta do seu plano e em que formato estão as aulas.</p>
+      </div>
+
+      <div class="faq__grid">
+        <div class="faq__side">
+          <div class="ask rim" data-sc-in>
+            <p class="ask__h">Ainda na dúvida?</p>
+            <p class="ask__p">Entre e use os 7 dias. Se não for para você, a garantia devolve o
+              dinheiro, e você não fica preso.</p>
+            <a class="ask__a" href="#pricing">Entrar no curso <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+
+        <div class="faq__main" data-sc-in>
+          <div class="qas">
+            <div class="qa rim"><h3><button type="button" aria-expanded="false">Nunca editei vídeo. Isso é para mim?<span class="qa__chev" aria-hidden="true"><svg><use href="#i-chev"/></svg></span></button></h3>
+              <div class="qa__a"><div><p>Sim. O curso começa do zero: você não precisa saber editar, precisa saber pedir. O Módulo 1 mostra o que o Claude edita, o que continua com você e os nomes de edição que ele entende, como corte, trilha, B-roll e nome na tela.</p></div></div></div>
+            <div class="qa rim"><h3><button type="button" aria-expanded="false">Preciso saber programar ou usar o terminal?<span class="qa__chev" aria-hidden="true"><svg><use href="#i-chev"/></svg></span></button></h3>
+              <div class="qa__a"><div><p>Não. O Claude escreve o arquivo do vídeo; você pede e confere. O Claude Code não pede terminal: ele mora numa aba do app do Claude. O HyperFrames você instala pedindo ao próprio Claude, e o Claude Design roda no navegador, sem instalar nada.</p></div></div></div>
+            <div class="qa rim"><h3><button type="button" aria-expanded="false">O que eu preciso ter?<span class="qa__chev" aria-hidden="true"><svg><use href="#i-chev"/></svg></span></button></h3>
+              <div class="qa__a"><div><p>Um plano pago do Claude: o plano grátis não abre o Claude Code nem o Claude Design. No computador, o Node, o FFmpeg e o Git, três programas gratuitos que o Módulo 3 instala com você. O curso faz tudo no Windows primeiro; onde o Mac for diferente, a aula avisa.</p></div></div></div>
+            <div class="qa rim"><h3><button type="button" aria-expanded="false">Quanto do meu plano do Claude isso gasta?<span class="qa__chev" aria-hidden="true"><svg><use href="#i-chev"/></svg></span></button></h3>
+              <div class="qa__a"><div><p>O limite do plano é um só para o chat, o Claude Code e o Claude Design. A aula 1.4 mostra o que come a cota depressa, o que sai de graça e como não estourar.</p></div></div></div>
+            <div class="qa rim"><h3><button type="button" aria-expanded="false">As aulas são em vídeo?<span class="qa__chev" aria-hidden="true"><svg><use href="#i-chev"/></svg></span></button></h3>
+              <div class="qa__a"><div><p>Hoje, não: as 70 aulas são PDFs, feitos para ler no celular, e 64 delas trazem o pedido pronto para colar no Claude. A capa de cada aula já avisa: em breve, em vídeo. Por enquanto, a aula completa está no PDF.</p></div></div></div>
+            <div class="qa rim"><h3><button type="button" aria-expanded="false">Quanto custa?<span class="qa__chev" aria-hidden="true"><svg><use href="#i-chev"/></svg></span></button></h3>
+              <div class="qa__a"><div><p>O valor exato aparece em <a href="#pricing">Sua vaga</a>, depois que você abre uma das três cartas: é pagamento único, sem mensalidade, com 7 dias de garantia. A assinatura do Claude é à parte.</p></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-band" data-sc-in>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Respondido, quero entrar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FECHAMENTO ═══════════ -->
+  <section id="start" class="close" data-sc-act="flow">
+    <div class="shell close__shell">
+      <div class="close__copy" data-sc-cue="0.02">
+        <h2 class="t-xl">A única pergunta<br>é quando você começa.</h2>
+        <p>Comece pela primeira aula e siga os 13 módulos na ordem, até a sua esteira da semana.
+          Pagamento único, com 7 dias para mudar de ideia.</p>
+        <a class="btn btn--lg btn--mesh" href="#pricing">Entrar na Masterclass agora</a>
+      </div>
+    </div>
+
+    <div class="app app--close" aria-hidden="true">
+      <div class="app__side">
+        <div class="app__search"><i></i><svg><use href="#i-search"/></svg></div>
+        <ul class="app__nav">
+          <li aria-current="true"><svg><use href="#i-book"/></svg>Os 13 módulos</li>
+          <li><svg><use href="#i-file"/></svg>Aulas em PDF</li>
+          <li><svg><use href="#i-list"/></svg>Pedidos prontos</li>
+          <li><svg><use href="#i-layout"/></svg>Claude Design</li>
+          <li><svg><use href="#i-eye"/></svg>Revisão</li>
+        </ul>
+      </div>
+      <div class="app__main app__main--dark">
+        <div class="preview is-on">
+          <span class="preview__av">1</span>
+          <p class="preview__name">Comece por aqui</p>
+          <p class="preview__meta"><span class="preview__faces"><i></i><i></i><i></i></span>Módulo 1 &middot; 4 aulas</p>
+          <a class="preview__cta" href="#pricing" tabindex="-1">Abrir o módulo</a>
+          <p class="preview__desc">O que o Claude edita, e o que continua com você &rarr; O que você
+            precisa antes de começar &rarr; O vocabulário de edição que o Claude entende &rarr;
+            Quanto gasta cada coisa do seu plano</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dunes" aria-hidden="true" data-dunes>
+      <img src="assets/dunes.webp" alt="" width="1600" height="349" decoding="async" loading="lazy">
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot" id="contact">
+  <div class="shell foot__grid">
+    <a class="foot__mark" href="#top" aria-label="Masterclass Editor com Claude, voltar ao topo">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#EBE4D4"/><path d="M10 8v8l7-4z" fill="#000"/></svg>
+    </a>
+    <nav class="foot__cols" aria-label="Rodapé">
+      <div class="foot__col">
+        <p class="foot__h">Curso</p>
+        <a href="#about">Como funciona</a>
+        <a href="#features">Por dentro</a>
+        <a href="#modules">Os 13 módulos</a>
+        <a href="#pricing">Preços</a>
+        <a href="#faq">Perguntas</a>
+      </div>
+      <div class="foot__col">
+        <p class="foot__h">Compra</p>
+        <a href="#pricing">Pagamento pela Hotmart</a>
+        <a href="#pricing">Garantia de 7 dias</a>
+        <a href="https://hotmart.com/pt-br/club/masterclass-editor-com-claude">Área de membros</a>
+      </div>
+      <div class="foot__col">
+        <p class="foot__h">Aulas</p>
+        <a href="#uses">O que você vai fazer</a>
+        <a href="#results">Testado aqui</a>
+        <a href="#who">Para quem é</a>
+      </div>
+    </nav>
+    <div class="foot__rule"></div>
+    <p class="foot__copy">&copy; Masterclass Editor com Claude 2026. Todos os direitos reservados</p>
+
+    <div class="foot__legal">
+      <p class="foot__legal-h">Aviso sobre resultados</p>
+      <p>Resultados não são garantidos. O que você consegue fazer depende da sua prática, do seu plano
+        do Claude e das versões das ferramentas, que mudam rápido. O uso de qualquer produto ou
+        serviço deve partir da sua própria análise.</p>
+      <p>Este site não faz parte da Anthropic e não é endossado por ela. Claude é marca da Anthropic,
+        PBC. HyperFrames, CapCut e as demais marcas citadas pertencem aos seus donos.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="ridge.js"></script>
+<script src="mesh.js"></script>
+<script src="scrollcraft.js"></script>
+<script src="app.js"></script>
+<script src="pick.js"></script>
+</body>
+</html>
