@@ -1558,8 +1558,8 @@ a.preview__cta:hover { background: #fff; }
 }
 
 /* ═══════════════════════════ as imagens do site, nos blocos desta página ══
-   Nesta página, as imagens saíram das próprias aulas (a página do PDF e o
-   quadro do teste), geradas por masterclass-editor-claude/site/imagens.mjs.
+   Nesta página, as imagens são as capas dos módulos e o notebook com a área
+   de membros, geradas por masterclass-editor-claude/site/imagens.mjs.
    Cada uma entra no bloco que já existia, dentro da mesma superfície de vidro. */
 
 /* marca do Trustpilot na tira de números */
@@ -2197,3 +2197,7 @@ img.mod__cover {
 
 /* as duas cartas que não foram escolhidas recuam fechadas, sem virar */
 .pcard.is-rest { animation: pcard-dim 0.5s var(--ease-ref) both; }
+
+/* no celular as quebras do título somem de propósito; o balanceamento divide as
+   linhas por igual e não deixa uma palavra sozinha na última */
+@media (max-width: 809px) { .t-hero { text-wrap: balance; } }
