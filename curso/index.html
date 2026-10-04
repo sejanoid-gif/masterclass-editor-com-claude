@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masterclass Editor com Claude: veja o curso por dentro</title>
+<meta name="description" content="Os 13 módulos e as 70 aulas da Masterclass Editor com Claude. Veja o que tem dentro antes de comprar: R$ 27,90, pagamento único, 7 dias de garantia.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Masterclass Editor com Claude: veja o curso por dentro">
+<meta property="og:description" content="13 módulos, 70 aulas. R$ 27,90, pagamento único, 7 dias de garantia.">
+<meta property="og:image" content="img/banner.webp">
+<link rel="icon" href="img/ec.webp">
+<link rel="preload" as="image" href="img/banner-celular.webp" media="(max-width: 719px)">
+<link rel="preload" as="image" href="img/banner.webp" media="(min-width: 720px)">
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+:root{
+  --fundo:#000; --cartao:#141414; --cartao-2:#1c1c1c; --linha:rgba(255,255,255,.10);
+  --tinta:#EBE4D4; --tinta-2:rgba(235,228,212,.72); --tinta-3:rgba(235,228,212,.5);
+  --laranja:#D97757; --raio:16px; --lado:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--fundo);color:var(--tinta);font-family:"Inter",system-ui,sans-serif;line-height:1.45;min-height:100vh}
+a{color:inherit}
+img{display:block;max-width:100%}
+.casca{max-width:1080px;margin:0 auto;padding:0 var(--lado)}
+
+/* barra do topo */
+.topo{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--linha)}
+.topo .casca{display:flex;align-items:center;gap:10px;height:56px}
+.topo img{width:32px;height:32px;border-radius:8px}
+.topo b{font-size:15px;font-weight:650;letter-spacing:-.01em;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;text-decoration:none;
+  background:var(--tinta);color:#000;font:inherit;font-weight:700;border-radius:999px;transition:transform .15s,opacity .15s}
+.btn:active{transform:scale(.97)}
+.btn--p{font-size:13px;padding:8px 14px}
+.btn--g{font-size:17px;padding:16px 20px;width:100%}
+
+/* capa: o banner com o quadrado EC por cima, como na area de membros */
+.capa{position:relative;margin-top:16px;border-radius:var(--raio);overflow:hidden;aspect-ratio:4/3;background:#3a1a10}
+.capa picture,.capa img.fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.capa .ec{position:absolute;left:50%;top:50%;width:34%;height:auto;aspect-ratio:1;max-width:200px;transform:translate(-50%,-50%);border-radius:14%;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+
+.cabeca{padding:22px 0 8px}
+.etq{font-size:12px;font-weight:650;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja)}
+h1{font-size:30px;line-height:1.08;letter-spacing:-.025em;font-weight:750;margin:8px 0 12px}
+.desc{color:var(--tinta-2);font-size:15.5px}
+.desc p+p{margin-top:10px}
+.desc.fechada{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mais{background:none;border:0;color:var(--tinta);font:inherit;font-weight:650;font-size:14px;text-decoration:underline;margin-top:6px;cursor:pointer;padding:4px 0}
+
+/* o cartao de compra */
+.compra{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:18px;margin:18px 0 8px}
+.preco{font-size:17px;color:var(--tinta-2);margin-bottom:14px}
+.preco strong{font-size:30px;color:var(--tinta);font-weight:750;letter-spacing:-.02em}
+.selos{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font-size:13px;color:var(--tinta-2)}
+.selos span{display:inline-flex;align-items:center;gap:6px}
+.selos svg{width:16px;height:16px;flex:none}
+
+/* conteudo: a galeria dos modulos */
+.cont{padding:28px 0 20px;scroll-margin-top:64px}
+.cont h2{font-size:22px;letter-spacing:-.02em;font-weight:720}
+.cont .sub{color:var(--tinta-3);font-size:14px;margin:4px 0 16px}
+.grade{display:grid;grid-template-columns:1fr;gap:18px}
+.mod{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;text-align:left;color:inherit;font:inherit;cursor:pointer;display:block;width:100%;padding:0}
+.mod img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#3a1a10}
+.mod .info{padding:12px 14px 14px;display:flex;gap:10px;align-items:flex-start}
+.mod .num{font-size:12px;font-weight:700;color:var(--laranja);letter-spacing:.08em;white-space:nowrap;padding-top:2px}
+.mod .t{font-weight:650;font-size:15.5px;line-height:1.3;flex:1}
+.mod .q{font-size:13px;color:var(--tinta-3);font-weight:500;margin-top:3px}
+.mod .seta{width:18px;height:18px;flex:none;margin-top:2px;color:var(--tinta-3);transition:transform .2s}
+.mod[aria-expanded="true"] .seta{transform:rotate(180deg)}
+.aulas{list-style:none;border-top:1px solid var(--linha);padding:6px 14px 10px}
+.aulas li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;font-size:14.5px;color:var(--tinta-2);border-bottom:1px solid rgba(255,255,255,.05)}
+.aulas li:last-child{border-bottom:0}
+.aulas li svg{width:15px;height:15px;flex:none;margin-top:3px;color:var(--tinta-3)}
+.aulas li b{color:var(--tinta-3);font-weight:600;font-variant-numeric:tabular-nums;min-width:32px}
+
+/* chamada final e barra fixa no celular */
+.fim{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:22px 18px;margin:12px 0 36px;text-align:center}
+.fim h2{font-size:21px;letter-spacing:-.02em;margin-bottom:6px}
+.fim p{color:var(--tinta-2);font-size:15px;margin-bottom:16px}
+.rodape{color:var(--tinta-3);font-size:12.5px;text-align:center;padding:0 0 110px}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(0,0,0,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--linha);padding:10px var(--lado) calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;
+  transform:translateY(110%);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.barra.ver{transform:none}
+.barra div{flex:1;font-size:13px;color:var(--tinta-2);line-height:1.2}
+.barra div strong{display:block;font-size:18px;color:var(--tinta)}
+.barra .btn{width:auto;font-size:15px;padding:13px 20px}
+
+@media (min-width:720px){
+  .capa{aspect-ratio:3/1}
+  .capa .ec{left:70%;width:auto;height:58%;max-width:none;aspect-ratio:1}
+  h1{font-size:44px}
+  .topo2{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start}
+  .compra{margin-top:30px}
+  .grade{grid-template-columns:repeat(2,1fr)}
+  .mod .aulas{display:block}
+}
+@media (min-width:1000px){ .grade{grid-template-columns:repeat(3,1fr)} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-chev" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><rect x="3.5" y="7" width="9" height="6.5" rx="1.6"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 16 16"><path d="M8 2 3 4v4c0 3 2.2 5.2 5 6 2.8-.8 5-3 5-6V4L8 2Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="m5.8 8 1.6 1.6L10.4 6.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-file" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M4 2.5h5l3 3v8H4v-11Z"/><path d="M9 2.5v3h3"/></g></symbol>
+  <symbol id="i-phone" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3"><rect x="4.5" y="1.8" width="7" height="12.4" rx="1.6"/><path d="M7 12h2" stroke-linecap="round"/></g></symbol>
+</defs></svg>
+
+<header class="topo"><div class="casca">
+  <img src="img/ec.webp" alt="" width="32" height="32">
+  <b>Masterclass Editor com Claude</b>
+  <a class="btn btn--p" href="https://pay.hotmart.com/J107787863N">Comprar</a>
+</div></header>
+
+<main class="casca">
+  <div class="capa">
+    <picture>
+      <source media="(min-width:720px)" srcset="img/banner.webp">
+      <img class="fundo" src="img/banner-celular.webp" alt="" fetchpriority="high">
+    </picture>
+    <img class="ec" src="img/ec.webp" alt="Editor com Claude" width="200" height="200">
+  </div>
+
+  <div class="topo2">
+    <section class="cabeca">
+      <div class="etq">Curso online · 13 módulos · 70 aulas</div>
+      <h1>Masterclass Editor com Claude</h1>
+      <div class="desc fechada" id="desc"><p>Editar vídeo com o Claude não é arrastar clipe numa linha do tempo. É pedir bem, e conferir o que volta.</p><p>Você descreve o corte, a legenda, o texto na tela, a trilha. O Claude escreve um arquivo, e o vídeo sai dele. O que continua com você é o olho: o que fica, o que sai e se o vídeo presta. O curso ensina as duas metades.</p><p>É isso que a Masterclass entrega. Em português, do zero, com o Claude Code, o HyperFrames e o Claude Design.</p><p>São 13 módulos e 70 aulas em PDF, feitas para ler no celular. Quase todas trazem o pedido pronto para colar no Claude.</p><p>A instalação e os testes são feitos no Windows.</p><p>O que o curso não inclui: a assinatura do Claude. O Claude Code e o Claude Design pedem um plano pago, e as aulas 1.2 e 1.4 mostram o que você precisa e quanto gasta cada coisa.</p><p>Uma ressalva honesta: essas ferramentas mudam rápido. As aulas dizem onde elas ainda falham, em vez de fingir que não falham.</p><p>Comece pela primeira aula. Na ordem.</p></div>
+      <button class="mais" id="mais" type="button">Mostrar mais</button>
+    </section>
+
+    <aside class="compra" id="compra">
+      <div class="preco">Por <strong>R$ 27,90</strong> à vista</div>
+      <a class="btn btn--g" href="https://pay.hotmart.com/J107787863N">Comprar agora</a>
+      <div class="selos">
+        <span><svg><use href="#i-shield"/></svg>7 dias de garantia</span>
+        <span><svg><use href="#i-file"/></svg>Pagamento pela Hotmart</span>
+        <span><svg><use href="#i-phone"/></svg>Acesso na hora, no celular</span>
+      </div>
+    </aside>
+  </div>
+
+  <section class="cont">
+    <h2>Conteúdo do curso</h2>
+    <div class="sub">13 módulos · 70 aulas · toque num módulo para ver as aulas</div>
+    <div class="grade" id="grade"></div>
+  </section>
+
+  <section class="fim">
+    <h2>Acesso a tudo isso por R$ 27,90</h2>
+    <p>Pagamento único. Se não for para você, os 7 dias de garantia devolvem o valor.</p>
+    <a class="btn btn--g" href="https://pay.hotmart.com/J107787863N">Comprar agora</a>
+  </section>
+  <p class="rodape">Depois da compra, a Hotmart manda o acesso para o seu email. As aulas ficam na área de membros, que abre no celular.</p>
+</main>
+
+<div class="barra" id="barra" aria-hidden="true">
+  <div>Masterclass Editor com Claude<strong>R$ 27,90</strong></div>
+  <a class="btn" href="https://pay.hotmart.com/J107787863N" tabindex="-1">Comprar agora</a>
+</div>
+
+<script>
+const MODULOS = [{"n": 1, "titulo": "Comece por aqui: o que o Claude edita, e o que continua com você", "aulas": ["O que o Claude edita, e o que continua com você", "O que você precisa antes de começar: plano, computador e custos", "O vocabulário de edição que o Claude entende: corte, trilha, B-roll, nome na tela", "Quanto cada coisa gasta do seu plano, e como não estourar a cota"]}, {"n": 2, "titulo": "Claude Design: peças e animações sem instalar nada", "aulas": ["Onde ele fica: o site, a conversa e o comando no Claude Code", "A primeira peça: uma cartela de abertura", "O kit da sua marca: cores, fontes e logo guardados de uma vez", "Ajustar no quadro sem gastar cota: arrastar, trocar texto e cor à mão", "Animar: texto que entra, número que sobe, logo que se monta", "Peças para rede: post e anúncio", "A capa do vídeo: a sua foto, pouco texto e leitura em tamanho pequeno", "Tirar do Claude Design: PDF, HTML, ZIP, e o vídeo pelo HyperFrames"]}, {"n": 3, "titulo": "Instalação: Claude Code e HyperFrames no Windows, do zero", "aulas": ["A aba Code: a primeira sessão, a pasta certa e os modos de permissão", "Modo de plano e nível de esforço: quando pedir para ele pensar mais", "Node, FFmpeg e Git: as três peças que o HyperFrames pede", "Instalar o HyperFrames pedindo ao Claude, e por que abrir uma sessão nova depois", "O teste: o diagnóstico e o primeiro vídeo de 10 segundos", "Chave de API sem vazar: onde guardar, e o que nunca colar na conversa", "Quando dá erro: os problemas conhecidos do Windows e a saída de cada um"]}, {"n": 4, "titulo": "Primeira edição: cortar erros, pausas e silêncios", "aulas": ["Gravar pensando no corte", "Vídeo de celular: o que já se resolve sozinho, e as duas linhas que são suas", "Transcrever em português sem virar inglês", "O plano de corte: o Claude propõe, você aprova", "Silêncio medido, não chutado: a folga que deixa o corte natural", "Exportar e conferir: rascunho para testar, qualidade alta para entregar", "Terminar no seu editor: o que levar para o CapCut, e em que formato"]}, {"n": 5, "titulo": "O briefing de edição: estilo, formato, beats e legibilidade", "aulas": ["A estrutura de um bom pedido de edição", "Pedido a frio e pedido a quente: por que entregar material rende mais", "Formato: 16:9, 9:16 e onde o texto não pode ficar", "O efeito na palavra certa: \"quando eu disser X, entra Y\"", "As palavras que viram movimento: suave, seco, elástico, cinematográfico", "Texto na tela que dá para ler", "Legenda que ajuda, e legenda que atrapalha", "O que não fazer: as negativas que o Claude entende", "Um bruto, três pedidos: o exercício que mostra o peso do pedido"]}, {"n": 6, "titulo": "O Studio: ajustar à mão o que o Claude fez", "aulas": ["Abrir o Studio e achar o que o Claude montou", "Cortar e mover na linha do tempo, sem desencontrar a voz", "Legenda e texto: o que o Studio corrige, e o que volta para o Claude"]}, {"n": 7, "titulo": "Revisão: o que a IA confere sozinha e o que só você vê", "aulas": ["O que a verificação automática pega, e o relatório que parece limpo sem ter rodado", "O que só você vê: ritmo, som e sentido", "Feedback com minutagem: da versão 1 para a versão 2", "Aprovar o plano antes do render", "Mandar para aprovação: o link do vídeo para o cliente ou a equipe"]}, {"n": 8, "titulo": "Do Design para o vídeo: o caminho pelo ZIP e o caminho pela nuvem", "aulas": ["Pelo ZIP: do Claude Design para o Claude Code, e dele para o MP4", "Pela nuvem: o envio direto para o HyperFrames", "As peças do Design sobre o seu vídeo: abertura, nome na tela e encerramento"]}, {"n": 9, "titulo": "Acabamento: som, B-roll, efeitos e direitos", "aulas": ["Trilha e efeitos: onde achar e em que volume", "Voz e música na mesma faixa: abrir espaço para a voz", "Voz gerada em português, sem sotaque de inglês", "B-roll sem filmar: tela gravada, site capturado, imagem gerada", "O catálogo: transições, nome na tela e blocos prontos pelo nome", "Zoom na hora certa: aproximar na palavra forte e dar vida à foto parada", "Recortar você do fundo: o texto que passa atrás de quem fala", "O que você pode usar: marca, música e imagem de gente"]}, {"n": 10, "titulo": "Vídeo sem aparecer: do texto ao explicativo narrado", "aulas": ["Do texto ao roteiro: uma ideia por cena", "A voz: escolher, fixar em português e medir o tempo", "Montar e legendar o explicativo"]}, {"n": 11, "titulo": "Formatos e escala: um vídeo, várias peças", "aulas": ["De um vídeo longo para vários Reels", "Da transcrição para o resto: título, descrição e capa", "Vídeos em série: um modelo, várias versões a partir de uma planilha", "Vídeo na batida da música: fotos e cortes no tempo certo"]}, {"n": 12, "titulo": "Skills e memória: o Claude lembrar do seu jeito", "aulas": ["O que é uma skill e onde ela mora", "A primeira skill, a partir do seu próprio feedback", "De uma referência para uma skill", "Recriar um vídeo que você admira, quadro a quadro", "O CLAUDE.md e a memória"]}, {"n": 13, "titulo": "Projetos completos: videoaula, produto, site e a sua esteira", "aulas": ["Videoaula com cards e legenda", "Vídeo de produto com as peças da sua marca", "Do site para o vídeo: um lançamento a partir de uma página", "A sua esteira: do pedido avulso para um fluxo que se repete toda semana"]}];
+const grade = document.getElementById('grade');
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+MODULOS.forEach(m => {
+  const [assunto, resto] = m.titulo.split(/: (.+)/);
+  const el = document.createElement('div');
+  el.innerHTML = `<button class="mod" type="button" aria-expanded="false">
+      <img src="img/modulo-${m.n}.webp" alt="Módulo ${m.n}: ${esc(assunto)}" width="960" height="540" loading="${m.n <= 2 ? 'eager' : 'lazy'}" decoding="async">
+      <div class="info"><span class="num">MÓD. ${m.n}</span>
+        <div class="t">${esc(assunto)}${resto ? `<div class="q">${esc(resto)}</div>` : ''}<div class="q">${m.aulas.length} aulas</div></div>
+        <svg class="seta"><use href="#i-chev"/></svg></div>
+    </button>
+    <ul class="aulas" hidden>${m.aulas.map((a, i) => `<li><svg><use href="#i-lock"/></svg><b>${m.n}.${i + 1}</b><span>${esc(a)}</span></li>`).join('')}</ul>`;
+  const btn = el.querySelector('.mod'), lista = el.querySelector('.aulas');
+  btn.addEventListener('click', () => { const ab = btn.getAttribute('aria-expanded') !== 'true'; btn.setAttribute('aria-expanded', ab); lista.hidden = !ab; });
+  el.className = 'mod-caixa'; el.style.cssText = 'background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden';
+  btn.style.border = '0'; btn.style.borderRadius = '0';
+  grade.appendChild(el);
+});
+const desc = document.getElementById('desc'), mais = document.getElementById('mais');
+mais.addEventListener('click', () => { const f = desc.classList.toggle('fechada'); mais.textContent = f ? 'Mostrar mais' : 'Mostrar menos'; });
+// a barra de compra aparece quando o cartao de compra sai da tela
+const barra = document.getElementById('barra');
+new IntersectionObserver(([e]) => { const v = !e.isIntersecting && e.boundingClientRect.top < 0; barra.classList.toggle('ver', v); barra.setAttribute('aria-hidden', !v); })
+  .observe(document.getElementById('compra'));
+</script>
+</body>
+</html>
