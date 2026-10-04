@@ -100,7 +100,15 @@ h1{font-size:30px;line-height:1.08;letter-spacing:-.025em;font-weight:750;margin
   .mod .aulas{display:block}
 }
 @media (min-width:1000px){ .grade{grid-template-columns:repeat(3,1fr)} }
-@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+/* preco e compra: escondidos nos primeiros 10 s, depois aparecem com um fade */
+.atraso{visibility:hidden;opacity:0;animation:aparece .6s ease 10s forwards}
+@keyframes aparece{to{visibility:visible;opacity:1}}
+/* o cartao de compra nao reserva um buraco: comeca fechado e abre aos 10 s */
+.compra.atraso{max-height:0;padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0;border-width:0;overflow:hidden;
+  animation:abre-cartao .7s cubic-bezier(.16,1,.3,1) 10s forwards}
+@keyframes abre-cartao{to{visibility:visible;opacity:1;max-height:420px;padding-top:18px;padding-bottom:18px;margin-top:18px;margin-bottom:8px;border-width:1px}}
+@media (min-width:720px){ @keyframes abre-cartao{to{visibility:visible;opacity:1;max-height:420px;padding-top:18px;padding-bottom:18px;margin-top:30px;margin-bottom:8px;border-width:1px}} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} .atraso{animation-duration:.01s} }
 </style>
 </head>
 <body>
@@ -115,7 +123,7 @@ h1{font-size:30px;line-height:1.08;letter-spacing:-.025em;font-weight:750;margin
 <header class="topo"><div class="casca">
   <img src="img/ec.webp" alt="" width="32" height="32">
   <b>Masterclass Editor com Claude</b>
-  <a class="btn btn--p" href="https://pay.hotmart.com/J107787863N">Comprar</a>
+  <a class="btn btn--p atraso" href="https://pay.hotmart.com/J107787863N">Comprar</a>
 </div></header>
 
 <main class="casca">
@@ -131,11 +139,9 @@ h1{font-size:30px;line-height:1.08;letter-spacing:-.025em;font-weight:750;margin
     <section class="cabeca">
       <div class="etq">Curso online · 13 módulos · 70 aulas</div>
       <h1>Masterclass Editor com Claude</h1>
-      <div class="desc fechada" id="desc"><p>Editar vídeo com o Claude não é arrastar clipe numa linha do tempo. É pedir bem, e conferir o que volta.</p><p>Você descreve o corte, a legenda, o texto na tela, a trilha. O Claude escreve um arquivo, e o vídeo sai dele. O que continua com você é o olho: o que fica, o que sai e se o vídeo presta. O curso ensina as duas metades.</p><p>É isso que a Masterclass entrega. Em português, do zero, com o Claude Code, o HyperFrames e o Claude Design.</p><p>São 13 módulos e 70 aulas em PDF, feitas para ler no celular. Quase todas trazem o pedido pronto para colar no Claude.</p><p>A instalação e os testes são feitos no Windows.</p><p>O que o curso não inclui: a assinatura do Claude. O Claude Code e o Claude Design pedem um plano pago, e as aulas 1.2 e 1.4 mostram o que você precisa e quanto gasta cada coisa.</p><p>Uma ressalva honesta: essas ferramentas mudam rápido. As aulas dizem onde elas ainda falham, em vez de fingir que não falham.</p><p>Comece pela primeira aula. Na ordem.</p></div>
-      <button class="mais" id="mais" type="button">Mostrar mais</button>
     </section>
 
-    <aside class="compra" id="compra">
+    <aside class="compra atraso" id="compra">
       <div class="preco">Por <strong>R$ 27,90</strong> à vista</div>
       <a class="btn btn--g" href="https://pay.hotmart.com/J107787863N">Comprar agora</a>
       <div class="selos">
@@ -152,7 +158,7 @@ h1{font-size:30px;line-height:1.08;letter-spacing:-.025em;font-weight:750;margin
     <div class="grade" id="grade"></div>
   </section>
 
-  <section class="fim">
+  <section class="fim atraso">
     <h2>Acesso a tudo isso por R$ 27,90</h2>
     <p>Pagamento único. Se não for para você, os 7 dias de garantia devolvem o valor.</p>
     <a class="btn btn--g" href="https://pay.hotmart.com/J107787863N">Comprar agora</a>
@@ -185,12 +191,13 @@ MODULOS.forEach(m => {
   btn.style.border = '0'; btn.style.borderRadius = '0';
   grade.appendChild(el);
 });
-const desc = document.getElementById('desc'), mais = document.getElementById('mais');
-mais.addEventListener('click', () => { const f = desc.classList.toggle('fechada'); mais.textContent = f ? 'Mostrar mais' : 'Mostrar menos'; });
 // a barra de compra aparece quando o cartao de compra sai da tela
 const barra = document.getElementById('barra');
-new IntersectionObserver(([e]) => { const v = !e.isIntersecting && e.boundingClientRect.top < 0; barra.classList.toggle('ver', v); barra.setAttribute('aria-hidden', !v); })
+let liberada = false; setTimeout(() => { liberada = true; }, 10000);
+new IntersectionObserver(([e]) => { const v = liberada && !e.isIntersecting && e.boundingClientRect.top < 0; barra.classList.toggle('ver', v); barra.setAttribute('aria-hidden', !v); }, { threshold: [0, 1] })
   .observe(document.getElementById('compra'));
+setTimeout(() => { const r = document.getElementById('compra').getBoundingClientRect(); const v = r.bottom < 0; barra.classList.toggle('ver', v); barra.setAttribute('aria-hidden', !v); }, 10050);
+window.addEventListener('scroll', () => { if (!liberada) return; const r = document.getElementById('compra').getBoundingClientRect(); const v = r.bottom < 0; barra.classList.toggle('ver', v); }, { passive: true });
 </script>
 </body>
 </html>
