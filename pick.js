@@ -7,7 +7,7 @@
 
    A escolhida abre "Vaga liberada" e as outras duas recuam fechadas. Na página
    da Masterclass de Vídeos com IA as três viram, com "Desconto liberado" e
-   "Desconto não liberado". Este produto não tem desconto (R$ 47,90 é o único
+   "Desconto não liberado". Este produto não tem desconto (R$ 27,90 é o único
    preço na Hotmart), então a carta afirmaria um desconto que não existe, e o
    "não liberado" das outras seria encenação: o risco de publicidade enganosa
    (CDC art. 37). Aqui fica a versão honesta com a mesma emoção. Se um dia
